@@ -1,11 +1,5 @@
-#include "sys.h"
-#include "delay.h"
-#include "usart.h"
-#include "led.h"
-#include "lcd.h"
+#include "board.h"
 #include "includes.h"
-
-#include "APPS.h"
 
 
 //主函数
@@ -14,22 +8,9 @@ int main(void)
 	OS_ERR err;
 	CPU_SR_ALLOC();
 	
-	delay_init(168);  //时钟初始化
-	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//中断分组配置
-	uart_init(115200);   //串口初始化
-	
-	INTX_DISABLE();		//关中断,防止滴答定时器对外设初始化的打扰
-	LED_Init();         //LED初始化	
-	LCD_Init();			//LCD初始化	
-	
-	POINT_COLOR = RED;
-	LCD_ShowString(30,10,200,16,16,"Explorer STM32F4");	
-	LCD_ShowString(30,30,200,16,16,"UCOSIII Examp 6-1");
-	LCD_ShowString(30,50,200,16,16,"Task Creat and Del");
-	LCD_ShowString(30,70,200,16,16,"ATOM@ALIENTEK");
-	LCD_ShowString(30,90,200,16,16,"2014/11/25");
-	INTX_ENABLE();		//开中断
-	
+	//硬件初始化
+	borad_HarwareInit();
+
 	OSInit(&err);		    //初始化UCOSIII
 	OS_CRITICAL_ENTER();	//进入临界区			 
 	//创建开始任务

@@ -1,12 +1,9 @@
 #ifndef __APPS_H
 #define __APPS_H
 
-#include "sys.h"
-#include "delay.h"
-#include "usart.h"
-#include "led.h"
-#include "lcd.h"
 #include "includes.h"
+
+#include "board.h"
 
 //UCOSIII中以下优先级用户程序不能使用，ALIENTEK
 //将这些优先级分配给了UCOSIII的5个系统内部任务
@@ -30,34 +27,6 @@ extern OS_TCB StartTaskTCB;
 extern CPU_STK START_TASK_STK[START_STK_SIZE];
 //任务函数
 void start_task(void *p_arg);
-
-////任务优先级
-//#define TASK1_TASK_PRIO		4
-////任务堆栈大小	
-//#define TASK1_STK_SIZE 		128
-////任务控制块
-//OS_TCB Task1_TaskTCB;
-////任务堆栈	
-//CPU_STK TASK1_TASK_STK[TASK1_STK_SIZE];
-//void task1_task(void *p_arg);
-
-////任务优先级
-//#define TASK2_TASK_PRIO		5
-////任务堆栈大小	
-//#define TASK2_STK_SIZE 		128
-////任务控制块
-//OS_TCB Task2_TaskTCB;
-////任务堆栈	
-//CPU_STK TASK2_TASK_STK[TASK2_STK_SIZE];
-////任务函数
-//void task2_task(void *p_arg);
-
-////LCD刷屏时使用的颜色
-//int lcd_discolor[14]={	WHITE, BLACK, BLUE,  BRED,      
-//						GRED,  GBLUE, RED,   MAGENTA,       	 
-//						GREEN, CYAN,  YELLOW,BROWN, 			
-//						BRRED, GRAY };
-
 
 
 #endif
