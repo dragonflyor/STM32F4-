@@ -18,6 +18,8 @@
 	#include "exfuns.h"  
 	#include "fattester.h" 
 
+	
+
 	void borad_HarwareInit(void);
 	
 	//SD¼ì²âµÈ

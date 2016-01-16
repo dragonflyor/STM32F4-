@@ -29,4 +29,8 @@ extern CPU_STK START_TASK_STK[START_STK_SIZE];
 void start_task(void *p_arg);
 
 
+//ÑÕÉ«
+extern int lcd_discolor[14];
+
+
 #endif

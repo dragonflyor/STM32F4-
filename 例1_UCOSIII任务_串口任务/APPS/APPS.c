@@ -237,7 +237,9 @@ void com_task(void *p_arg)
 				printf("串口任务已经执行：%d次\r\n",com_num);
 				LCD_ShowxNum(206+120,111,com_num,3,16,0x80);  //显示任务执行次数
 				LCD_Fill(126+120,131,233+120,313,lcd_discolor[13-com_num%14]); //填充区域
-				
+				//状态条尾部灰，橙色闪烁表示系统串口任务正在轮询工作
+				LCD_Fill(lcddev.width-19,lcddev.height-39,lcddev.width,lcddev.height-21,lcd_discolor[13-com_num%2]); //填充状态信号
+	
 				//-----------------------------------------------------------------------
 				//成功接收到数据
 				if(USART_RX_STA&0x8000)

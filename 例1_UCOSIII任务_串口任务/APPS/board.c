@@ -1,5 +1,8 @@
 #include "board.h"
 
+	//APP的颜色
+	extern int lcd_discolor[14];
+
 //硬件初始化
 void borad_HarwareInit(void)
 {
@@ -165,11 +168,15 @@ void m_creatFile(char * pathname ,int timeout,u16 cycletime)
 //显示串口收到的数据
 //comdata:要显示的数据
 void com_statusBar(char * comdata){
+	static u8 rec_count = 0;
 	LCD_DrawRectangle(1,lcddev.height-40,lcddev.width-1,lcddev.height-1); //屏幕底部画一个矩形	
 	LCD_DrawLine(1,lcddev.height-20,lcddev.width,lcddev.height-20);		//画线
 	LCD_ShowString(2,lcddev.height-39,500,16,16,"Received data from srialport:"); //标题
 	
 	LCD_Fill(2,lcddev.height-19,lcddev.width-2,lcddev.height-2,WHITE);
 	LCD_ShowString(2,lcddev.height-19,500,16,16,(u8*)comdata); //内容
+	
+	//状态条尾部蓝绿色闪烁：表示系统串口任务正在接收数据
+	LCD_Fill(lcddev.width-19,lcddev.height-39,lcddev.width,lcddev.height-21,lcd_discolor[10-rec_count%2]); //填充状态信号
 }
 
