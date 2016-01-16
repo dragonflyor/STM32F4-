@@ -23,6 +23,8 @@
 	//SD检测等
 	void SDCard_Init(void);
 	//串口接收数据保存在SD卡
-	void m_creatFile(char * pathname);
+	void m_creatFile(char * pathname ,int timeout,u16 cycletime);
+	//串口状态条
+	void com_statusBar(char * comdata);
 
 #endif
